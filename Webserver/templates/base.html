@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="visually-hidden">Main page</h1>
+
+    <div class="px-4 py-5 my-5 text-center">
+      <img
+        class="d-block mx-auto mb-4"
+        src="static/icon.png"
+        width="100"
+        height="100"
+      />
+      <h1 class="display-5 fw-bold">Text Detection</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          The text extractor will allow you to extract text from any image. You
+          may upload an image . and the tool will pull text from the image. Once
+          extracted, you can copy to your clipboard with one click.
+        </p>
+        <div class="submit_bar">
+          <h3>Select a file to upload</h3>
+
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for
+          message in messages %}
+          <p>{{ message }}</p>
+          {% endfor %} {% endif %} {% endwith %}
+          <form method="post" action="/" enctype="multipart/form-data">
+            <dl>
+              <p>
+                <input
+                  type="file"
+                  name="file"
+                  class="form-control"
+                  autocomplete="off"
+                  required
+                />
+              </p>
+            </dl>
+            <p>
+              <input
+                type="submit"
+                value="submit"
+                class="btn btn-primary btn-lg px-4 gap-3"
+              />
+            </p>
+
+            <h3>extracted text:</h3>
+            <textarea
+              class="form-control"
+              id="floatingTextarea2Disabled"
+              style="height: 100px"
+              disabled
+            >
+            {{finaltext}}
+            </textarea>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
